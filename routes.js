@@ -27,7 +27,7 @@ routes.post('/', (req, res)=>{
 routes.delete('/:id', (req, res)=>{
     req.getConnection((err, conn)=>{
         if(err) return res.send(err)
-        conn.query('DELETE FROM registro WHERE id = ?', [req.params.id], (err, rows)=>{
+        conn.query('DELETE FROM registro WHERE idRegistro = ?', [req.params.id], (err, rows)=>{
             if(err) return res.send(err)
 
             res.send('registro borrado!')
@@ -38,7 +38,7 @@ routes.delete('/:id', (req, res)=>{
 routes.put('/:id', (req, res)=>{
     req.getConnection((err, conn)=>{
         if(err) return res.send(err)
-        conn.query('UPDATE registro set ? WHERE id = ?', [req.body, req.params.id], (err, rows)=>{
+        conn.query('UPDATE registro set ? WHERE idRegistro = ?', [req.body, req.params.id], (err, rows)=>{
             if(err) return res.send(err)
 
             res.send('registro updated!')
